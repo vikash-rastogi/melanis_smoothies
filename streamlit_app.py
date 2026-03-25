@@ -12,14 +12,18 @@ name_on_order = st.text_input("Name on Smoothie:")
 st.write("Your name on Smoothie woule be:", name_on_order)
 
 session = get_active_session()
-fruit_names = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width=True)
-st.stop()
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+# st.dataframe(data=my_dataframe, use_container_width=True)
+# st.stop()
 
+# Convert the Snowpark dataframe to a Pandas Dataframe so we can use the LOC function
+pd_sf=my_dataframe.to_pandas()
+st.dataframe(pd_sf)
+st.stop
 
 ingredient_list = st.multiselect(
     "Choose upto 5 ingredients:",
-    fruit_names,
+    my_dataframe,
     max_selections=5
 )
 
