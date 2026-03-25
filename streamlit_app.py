@@ -12,6 +12,16 @@ st.title(f"Place your order for healthy smoothie :cup_with_straw:")
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("Your name on Smoothie woule be:", name_on_order)
 
+CONNECTION_PARAMETERS = {
+    'account': 'CVBSGPA-SY84580',
+    'user': 'SY84580',
+    'password': 'Vikash12345678',
+    'role': 'SYSADMIN',
+    'database': 'SMOOTHIES',
+    'schema': 'PUBLIC',
+    'warehouse': 'COMPUTE_WH',
+}
+
 # session = get_active_session()
 session = Session.builder.configs(CONNECTION_PARAMETERS).create()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
