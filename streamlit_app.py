@@ -3,13 +3,13 @@ import streamlit as st
 from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
-session = get_active_session()
 # Write directly to the app.
 st.title(f"Place your order for healthy smoothie :cup_with_straw:")
 
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("Your name on Smoothie woule be:", name_on_order)
 
+session = get_active_session()
 fruit_names = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 # st.dataframe(data=my_dataframe, use_container_width=True)
 
