@@ -14,7 +14,7 @@ st.write("Your name on Smoothie woule be:", name_on_order)
 
 CONNECTION_PARAMETERS = {
     'account': 'CVBSGPA-SY84580',
-    'user': 'SY84580',
+    'user': 'VIKRASTO',
     'password': 'Vikash12345678',
     'role': 'SYSADMIN',
     'database': 'SMOOTHIES',
